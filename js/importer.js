@@ -97,12 +97,32 @@ function setElement(elemName, val, isScry){
 
 function isCorrectTab(prefix, slot, url){
   val = url.match("&bodygene=[0-9]+")[0].replace("&bodygene=","");
-  elem = document.getElementById(prefix+"priGene"+slot);
-  for (i=0;i<elem.options.length;i++){
-    opt = elem.options[i].value;
-    if (opt.split("_")[0] == val){
+  breed  = breeds[parseInt(url.match("breed=[0-9]+")[0].replace("breed=",""))];
+
+  if (ancients.has(breed)){
+    //ancient
+    if (prefix != ancients.get(breed)+"_"){
+      return false;
+    }
+    else {
       return true;
     }
   }
-  return false;
+  else {
+    if (prefix != "m_"){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+  // elem = document.getElementById(prefix+"priGene"+slot);
+  // for (i=0;i<elem.options.length;i++){
+  //   opt = elem.options[i].value;
+  //   // console.log(opt);
+  //   if (opt.split("_")[0] == val){
+  //     return true;
+  //   }
+  // }
+  // return false;
 }

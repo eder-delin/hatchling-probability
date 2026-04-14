@@ -23,18 +23,41 @@ secondary = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheetid}/expor
 tertiary = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheetid}/export?gid={sortd}&format=csv", usecols=[6, 7, 8], header=None).dropna()
 mbreeds = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheetid}/export?gid={sortd}&format=csv", usecols=[9, 10, 11], header=None).dropna()
 #colors = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheetid}/export?gid={listen}&format=csv", usecols=[0, 1], skiprows = 14, header=None).dropna()
+allbreeds = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheetid}/export?gid={sortd}&format=csv", usecols=[12, 13], header=None).dropna()
 
-for row in rlist.itertuples():
-	tpe = row[1]
-	prefix = re.findall("^[A-Za-z]+", row[2])
-	if (len(tpe) > 1 and len(prefix) > 0):
-		btypes.append(tpe)
-		rgxlist.append(row[2])
-		prefixes.append(prefix[0].lower())
-		ancients.append(prefix[0])
+pad = ", "
+with open("js/breeds.js", "w") as fout:
+	fout.write("const ancients = new Map();\n")
+	for row in rlist.itertuples():
+		tpe = row[1]
+		prefix = re.findall("^[A-Za-z]+", row[2])
+		if (len(tpe) > 1 and len(prefix) > 0):
+			fout.write(f"ancients.set(\"{tpe}\", \"{prefix[0].lower()}\");\n")
+			btypes.append(tpe)
+			rgxlist.append(row[2])
+			prefixes.append(prefix[0].lower())
+			ancients.append(prefix[0])
+	fout.write("\n\n")
 def prlist(glist):
 	for el in glist:
 		print(el)	
+
+idx = 0
+isfirst = True
+with open("js/breeds.js", "a") as fout:
+	fout.write("const breeds = [\n")
+	for row in allbreeds.itertuples():
+		if (isfirst):
+			isfirst = False
+		else:
+			fout.write(pad)
+		while (int(row[2]) != idx):
+			fout.write("\"x\""+pad)
+			idx += 1
+		fout.write(f"\"{row[1]}\"")
+		#fout.write(f"\tb{int(row[2])}: \"{row[1]}\",\n")
+		idx += 1
+	fout.write("]");
 
 #for row in colors.itertuples():
 #	el = "<option value={}>".format(int(row[2])) + row[1] + "</option>"
