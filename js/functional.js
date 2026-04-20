@@ -31,7 +31,7 @@ jQuery(document).ready(function(){
 	//scry import boxes
 	$(".import").focusout(function(event){
 		var inp = this.value, type = validateInput(inp), url;
-		var prefix = this.id.slice(0,2), slot = this.id.slice(-1);
+		var prefix = this.id.match("^[a-z]+_")[0], slot = this.id.slice(-1);
 		if (slot == "t"){
 			slot = "";
 		}

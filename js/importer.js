@@ -98,7 +98,6 @@ function setElement(elemName, val, isScry){
 function isCorrectTab(prefix, slot, url){
   val = url.match("&bodygene=[0-9]+")[0].replace("&bodygene=","");
   breed  = breeds[parseInt(url.match("breed=[0-9]+")[0].replace("breed=",""))];
-
   if (ancients.has(breed)){
     //ancient
     if (prefix != ancients.get(breed)+"_"){
