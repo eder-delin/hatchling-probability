@@ -86,5 +86,5 @@ function readForm(type, singlePrimary, singleSecondary, singleTertiary){
     showProbability(type, 4);
   }
   else showProbability(type, 5);
-  document.getElementById(type+"export").innerHTML = "https://hatchling-probability.ew.r.appspot.com/"+expString;
+  document.getElementById(type+"export").innerHTML = "https://eder-delin.github.io/hatchling-probability/"+expString;
 }
