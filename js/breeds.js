@@ -3,6 +3,7 @@ ancients.set("Aberration", "a");
 ancients.set("Aether", "ae");
 ancients.set("Auraboa", "au");
 ancients.set("Banescale", "b");
+ancients.set("Chorus", "ch");
 ancients.set("Cirrus", "c");
 ancients.set("Dusthide", "d");
 ancients.set("Everlux", "e");
@@ -15,4 +16,4 @@ ancients.set("Vigil", "vg");
 
 
 const breeds = [
-"x", "Fae", "Guardian", "Mirror", "Pearlcatcher", "Ridgeback", "Tundra", "Spiral", "Imperial", "Snapper", "Wildclaw", "Nocturne", "Coatl", "Skydancer", "Bogsneak", "Obelisk", "Fathom", "Gaoler", "Banescale", "Veilspun", "Aberration", "Undertide", "Aether", "Sandsurge", "Auraboa", "Dusthide", "Everlux", "Cirrus", "Vigil", "Thorntail"]
+"x", "Fae", "Guardian", "Mirror", "Pearlcatcher", "Ridgeback", "Tundra", "Spiral", "Imperial", "Snapper", "Wildclaw", "Nocturne", "Coatl", "Skydancer", "Bogsneak", "Obelisk", "Fathom", "Gaoler", "Banescale", "Veilspun", "Aberration", "Undertide", "Aether", "Sandsurge", "Auraboa", "Dusthide", "Everlux", "Cirrus", "Vigil", "Thorntail", "Chorus"]
